@@ -45,7 +45,8 @@ using ::android::hardware::power::V1_0::Feature;
 using ::vendor::nvidia::hardware::power::V1_0::ExtPowerHint;
 
 Power::Power() {
-    pInfo = new powerhal_info();
+    if (!pInfo)
+        pInfo = new powerhal_info();
 
     pInfo->input_devs.push_back({-1, "touch\n"});
     pInfo->input_devs.push_back({-1, "raydium_ts\n"});
